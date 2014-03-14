@@ -10,9 +10,11 @@
 #define NOT_A_HASH_TABLE -1
 
 void printHashTable(HashTablePTR table) {
+	if (table == NULL) return;
 	char** keys;
 	unsigned int keyCount;
-	GetKeys(table, (char* (*)[]) &keys, &keyCount);
+	int status = GetKeys(table, (char* (*)[]) &keys, &keyCount);
+	if (status == NOT_A_HASH_TABLE) return;
 	for (unsigned int i = 0; i < keyCount; i++) {
 		char* dat;
 		char* key = keys[i];
@@ -34,6 +36,22 @@ void freeHashTableContents(HashTablePTR table) {
 	}
 	free(keys);
 }
+
+#define VER(res, name) if (res != NOT_A_HASH_TABLE) printf(name " did not check for sentinel\n")
+
+void sentinelTest() {
+	HashTablePTR table = malloc(sizeof(int));
+	table->sentinel = 0x1fee1bad; /* I feel bad */
+	VER(InsertEntry(table, NULL, NULL, NULL), "Insert");
+	VER(DeleteEntry(table, NULL, NULL), "Delete");
+	VER(FindEntry(table, NULL, NULL), "Find");
+	VER(GetKeys(table, NULL, NULL), "Get");
+	VER(GetLoadFactor(table, NULL), "Load");
+	VER(DestroyHashTable(&table), "Destroy");
+	free(table);
+}
+
+#undef VER
 
 int main() {
 	HashTablePTR table = NULL;
@@ -92,6 +110,10 @@ int main() {
 					printf("Inserted after removing existing data: %s\n", existingData);
 					free(existingData);
 					break;
+				default:
+					printf("InsertEntry failed\n");
+					free(value);
+					break;
 			}
 		} else if (strcmp(cmd, "read") == 0) {
 			printf("Key: ");
@@ -124,6 +146,8 @@ int main() {
 			} else {
 				printf("Load factor returned failure\n");
 			}
+		} else if (strcmp(cmd, "sentinel") == 0) {
+			sentinelTest();
 		} else if (strcmp(cmd, "quit") == 0) {
 			break;
 		} else {

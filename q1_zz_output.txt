@@ -19,4 +19,8 @@ Command: Load factor: 2.000000
 Command: Key: Deleted (was Weasley)
 Command: Harry:Potter
 Command: Load factor: 1.000000
+Command: Command: Key: InsertEntry failed
+Command: Command: Key: readPosition returned failure
+Command: Key: DeleteValue returned failure
+Command: Load factor returned failure
 Command: Command: 
