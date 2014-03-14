@@ -3,6 +3,12 @@
 #include <string.h>
 #include "hashtable.h"
 
+#define GET_COLLIDE 1
+#define GET_EXISTS 2
+#define GET_NONE 0
+
+#define NOT_A_HASH_TABLE -1
+
 void printHashTable(HashTablePTR table) {
 	char** keys;
 	unsigned int keyCount;
@@ -76,13 +82,13 @@ int main() {
 			char* existingData = NULL;
 			int success = InsertEntry(table, key, value, (void**) &existingData);
 			switch(success){
-				case 0:
+				case GET_NONE:
 					printf("Inserted into blank space\n");
 					break;
-				case -1:
+				case GET_COLLIDE:
 					printf("Inserted after resolving hash collision\n");
 					break;
-				case -2:
+				case GET_EXISTS:
 					printf("Inserted after removing existing data: %s\n", existingData);
 					free(existingData);
 					break;
