@@ -93,33 +93,38 @@ int main() {
 					free(existingData);
 					break;
 			}
-		} /*else if (strcmp(cmd, "read") == 0) {
-			printf("Position: ");
-			unsigned int position;
-			scanf("%u", &position);
-			int value;
-			int success = readPosition(table, &value, position);
-			if (success == 0) {
-				printf("%d\n", value);
+		} else if (strcmp(cmd, "read") == 0) {
+			printf("Key: ");
+			char key[81];
+			scanf(" %80s", key);
+			char* value;
+			int success = FindEntry(table, key, (void**) &value);
+			if (success == GET_EXISTS) {
+				printf("%s\n", value);
 			} else {
 				printf("readPosition returned failure\n");
 			}
-		} else if (strcmp(cmd, "insert") == 0) {
-			printf("Value and position: ");
-			int value;
-			unsigned int position;
-			scanf("%d %u", &value, &position);
-			int success = insertPosition(table, value, position);
-			printf(success == 0? "insertPosition returned success\n":
-				"insertPosition returned failure\n");
 		} else if (strcmp(cmd, "delete") == 0) {
-			printf("Position: ");
-			unsigned int position;
-			scanf("%u", &position);
-			int success = deletePosition(table, position);
-			printf(success == 0? "deletePosition returned success\n":
-				"deletePosition returned failure\n");
-		} */ else if (strcmp(cmd, "quit") == 0) {
+			printf("Key: ");
+			char key[81];
+			scanf(" %80s", key);
+			char* value;
+			int success = DeleteEntry(table, key, (void**) &value);
+			if (success == GET_EXISTS) {
+				printf("Deleted (was %s)\n", value);
+				free(value);
+			} else {
+				printf("DeleteValue returned failure\n");
+			}
+		} else if (strcmp(cmd, "load") == 0) {
+			float myfloat;
+			int status = GetLoadFactor(table, &myfloat);
+			if (status == 0) {
+				printf("Load factor: %f\n", myfloat);
+			} else {
+				printf("Load factor returned failure\n");
+			}
+		} else if (strcmp(cmd, "quit") == 0) {
 			break;
 		} else {
 			printf("Invalid command\n");

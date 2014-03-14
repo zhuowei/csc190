@@ -7,4 +7,16 @@ Command: Key: Exists: Praxis
 Inserted after removing existing data: Praxis
 Command: StCyr:CSC190
 Foster:Torture
+Command: Key: Torture
+Command: Key: Deleted (was Torture)
+Command: StCyr:CSC190
+Command: Command: Size: create returned non-NULL
+Command: Key: Inserted into blank space
+Command: Key: Inserted after resolving hash collision
+Command: Ron:Weasley
+Harry:Potter
+Command: Load factor: 2.000000
+Command: Key: Deleted (was Weasley)
+Command: Harry:Potter
+Command: Load factor: 1.000000
 Command: Command: 
