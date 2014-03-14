@@ -1,0 +1,10 @@
+Command: Size: create returned non-NULL
+Command: Key: Inserted into blank space
+Command: Key: Inserted into blank space
+Command: Key: Exists: CSC190
+Inserted after removing existing data: CSC190
+Command: Key: Exists: Praxis
+Inserted after removing existing data: Praxis
+Command: StCyr:CSC190
+Foster:Torture
+Command: Command: 

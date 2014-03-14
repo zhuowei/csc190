@@ -1,0 +1,17 @@
+create
+15
+set
+Foster
+CSC190
+set
+StCyr
+CSC190
+set
+Foster
+Praxis
+set
+Foster
+Torture
+print
+destroy
+quit
