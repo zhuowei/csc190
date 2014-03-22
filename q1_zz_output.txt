@@ -1,10 +1,11 @@
+#valgrind --quiet --leak-check=full --track-origins=yes ./smartArrayTester <q1input.txt | tee q1output.txt
+# diff q1output.txt q1ref_output.txt
+valgrind --quiet --leak-check=full --track-origins=yes ./hashtableTester
 Command: Size: create returned non-NULL
 Command: Key: Inserted into blank space
 Command: Key: Inserted into blank space
-Command: Key: Exists: CSC190
-Inserted after removing existing data: CSC190
-Command: Key: Exists: Praxis
-Inserted after removing existing data: Praxis
+Command: Key: Inserted after removing existing data: CSC190
+Command: Key: Inserted after removing existing data: Praxis
 Command: StCyr:CSC190
 Foster:Torture
 Command: Key: Torture

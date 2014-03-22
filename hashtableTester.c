@@ -8,18 +8,21 @@
 #define GET_NONE 0
 
 #define NOT_A_HASH_TABLE -1
+#define ENTRY_NOT_FOUND -2
+#define OUT_OF_RAM -2
 
 void printHashTable(HashTablePTR table) {
 	if (table == NULL) return;
 	char** keys;
 	unsigned int keyCount;
-	int status = GetKeys(table, (char* (*)[]) &keys, &keyCount);
-	if (status == NOT_A_HASH_TABLE) return;
+	int status = GetKeys(table, &keys, &keyCount);
+	if (status == NOT_A_HASH_TABLE || status == OUT_OF_RAM) return;
 	for (unsigned int i = 0; i < keyCount; i++) {
 		char* dat;
 		char* key = keys[i];
 		FindEntry(table, key, (void**) &dat);
 		printf("%s:%s\n", key, dat);
+		free(key);
 	}
 	free(keys);
 }
@@ -27,12 +30,13 @@ void printHashTable(HashTablePTR table) {
 void freeHashTableContents(HashTablePTR table) {
 	char** keys;
 	unsigned int keyCount;
-	GetKeys(table, (char* (*)[]) &keys, &keyCount);
+	GetKeys(table, &keys, &keyCount);
 	for (unsigned int i = 0; i < keyCount; i++) {
 		char* dat;
 		char* key = keys[i];
 		FindEntry(table, key, (void**) &dat);
 		free(dat);
+		free(key);
 	}
 	free(keys);
 }
@@ -121,7 +125,7 @@ int main() {
 			scanf(" %80s", key);
 			char* value;
 			int success = FindEntry(table, key, (void**) &value);
-			if (success == GET_EXISTS) {
+			if (success == 0) {
 				printf("%s\n", value);
 			} else {
 				printf("readPosition returned failure\n");
@@ -132,7 +136,7 @@ int main() {
 			scanf(" %80s", key);
 			char* value;
 			int success = DeleteEntry(table, key, (void**) &value);
-			if (success == GET_EXISTS) {
+			if (success == 0) {
 				printf("Deleted (was %s)\n", value);
 				free(value);
 			} else {
