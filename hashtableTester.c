@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "hashtable.h"
+#include "hashTable.h"
 
 #define GET_COLLIDE 1
 #define GET_EXISTS 2
