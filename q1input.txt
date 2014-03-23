@@ -34,14 +34,5 @@ Ron
 print
 load
 destroy
-set
-StCyr
-CSC190
-print
-read
-StCyr
-delete
-StCyr
-load
 sentinel
 quit

@@ -1,4 +1,4 @@
-OBJS = hashTable.o hashtableTester.o
+OBJS = HashTable.o hashtableTester.o
 
 OUTPUT = hashtableTester
 
