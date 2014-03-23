@@ -17,6 +17,9 @@ void printHashTable(HashTablePTR table) {
 	unsigned int keyCount;
 	int status = GetKeys(table, &keys, &keyCount);
 	if (status == NOT_A_HASH_TABLE || status == OUT_OF_RAM) return;
+	/* sort the keys */
+	qsort(keys, keyCount, sizeof(char*), (int (*)(const void*, const void*))
+		strcmp);
 	for (unsigned int i = 0; i < keyCount; i++) {
 		char* dat;
 		char* key = keys[i];
