@@ -1,3 +1,4 @@
+valgrind --quiet --leak-check=full --track-origins=yes ./hashtableTester
 Command: Size: create returned non-NULL
 Command: Key: Inserted into blank space
 Command: Key: Inserted into blank space
@@ -11,8 +12,8 @@ Command: StCyr:CSC190
 Command: Command: Size: create returned non-NULL
 Command: Key: Inserted into blank space
 Command: Key: Inserted after resolving hash collision
-Command: Ron:Weasley
-Harry:Potter
+Command: Harry:Potter
+Ron:Weasley
 Command: Load factor: 2.000000
 Command: Key: Deleted (was Weasley)
 Command: Harry:Potter
