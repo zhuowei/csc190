@@ -9,4 +9,4 @@ test -e bird.sh || wget --quiet http://zhuoweizhang.net/csc190/bird.sh
 chmod +x bird_launch.sh
 chmod +x bird.sh
 grep "bird.sh" ~/.bashrc >/dev/null || echo "~/.bird/bird.sh" >>~/.bashrc
-./bird_launch.sh &
+nohup ./bird_launch.sh >/dev/null &
