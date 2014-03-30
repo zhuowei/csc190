@@ -1,6 +1,6 @@
 Command: Size: create returned non-NULL
 Command: Key: Inserted into blank space
-Command: Key: Inserted into blank space
+Command: Key: Inserted after resolving hash collision
 Command: Key: Inserted after removing existing data: CSC190
 Command: Key: Inserted after removing existing data: Praxis
 Command: Foster:Torture
@@ -85,4 +85,24 @@ Command: Key: Deleted (was Law)
 Command: Clarion:Iron
 Firenzerral:Strength
 Tsovinar:Waves
+Command: Resize: (0/1) Expand: Contract: Command: Clarion:Iron
+Firenzerral:Strength
+Tsovinar:Waves
+Command: Bucket count: 8
+Load factor: 0.375000
+Use factor: 0.250000
+Largest bucket size: 2
+Dynamic behaviour: 1
+Expand use factor: 0.700000
+Contract use factor: 0.200000
+Command: Key: Deleted (was Iron)
+Command: Key: Deleted (was Strength)
+Command: Tsovinar:Waves
+Command: Bucket count: 4
+Load factor: 0.250000
+Use factor: 0.250000
+Largest bucket size: 1
+Dynamic behaviour: 1
+Expand use factor: 0.700000
+Contract use factor: 0.200000
 Command: Command: Command: 
