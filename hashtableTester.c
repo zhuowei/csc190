@@ -11,6 +11,11 @@
 #define ENTRY_NOT_FOUND -2
 #define OUT_OF_RAM -2
 
+static int mycompare(const void* a, const void* b) {
+	int retval = strcmp(*((const char**) a), *((const char**) b));
+	return retval;
+}
+
 void printHashTable(HashTablePTR table) {
 	if (table == NULL) return;
 	char** keys;
@@ -18,8 +23,7 @@ void printHashTable(HashTablePTR table) {
 	int status = GetKeys(table, &keys, &keyCount);
 	if (status == NOT_A_HASH_TABLE || status == OUT_OF_RAM) return;
 	/* sort the keys */
-	qsort(keys, keyCount, sizeof(char*), (int (*)(const void*, const void*))
-		strcmp);
+	qsort(keys, keyCount, sizeof(char*), mycompare);
 	for (unsigned int i = 0; i < keyCount; i++) {
 		char* dat;
 		char* key = keys[i];

@@ -3,20 +3,20 @@ Command: Key: Inserted into blank space
 Command: Key: Inserted into blank space
 Command: Key: Inserted after removing existing data: CSC190
 Command: Key: Inserted after removing existing data: Praxis
-Command: StCyr:CSC190
-Foster:Torture
+Command: Foster:Torture
+StCyr:CSC190
 Command: Key: Torture
 Command: Key: Deleted (was Torture)
 Command: StCyr:CSC190
 Command: Command: Size: create returned non-NULL
 Command: Key: Inserted into blank space
-Command: Key: Inserted after resolving hash collision
+Command: Key: Inserted into blank space
 Command: Harry:Potter
 Ron:Weasley
-Command: Load factor: 2.000000
+Command: Load factor: 0.500000
 Command: Key: Deleted (was Weasley)
 Command: Harry:Potter
-Command: Load factor: 1.000000
+Command: Load factor: 0.250000
 Command: Command: Size: create returned non-NULL
 Command: Bucket count: 1
 Load factor: 0.000000
@@ -40,14 +40,14 @@ Command: Key: Inserted after resolving hash collision
 Command: Key: Inserted after resolving hash collision
 Command: Key: Inserted after resolving hash collision
 Command: Key: Inserted after resolving hash collision
-Command: Diadem:Truth
-Marzban:Law
-Vaughn:Secret
-Tsovinar:Waves
-Solornel:Storm
-Rashk:Sight
-Clarion:Iron
+Command: Clarion:Iron
+Diadem:Truth
 Firenzerral:Strength
+Marzban:Law
+Rashk:Sight
+Solornel:Storm
+Tsovinar:Waves
+Vaughn:Secret
 Command: Bucket count: 1
 Load factor: 8.000000
 Use factor: 1.000000
@@ -56,33 +56,33 @@ Dynamic behaviour: 0
 Expand use factor: 0.300000
 Contract use factor: 0.100000
 Command: Key: Deleted (was Sight)
-Command: Marzban:Law
-Solornel:Storm
-Tsovinar:Waves
-Vaughn:Secret
+Command: Clarion:Iron
 Diadem:Truth
 Firenzerral:Strength
-Clarion:Iron
-Command: Key: Deleted (was Truth)
-Command: Solornel:Storm
-Tsovinar:Waves
 Marzban:Law
-Vaughn:Secret
-Firenzerral:Strength
-Clarion:Iron
-Command: Key: Deleted (was Secret)
-Command: Marzban:Law
 Solornel:Storm
 Tsovinar:Waves
+Vaughn:Secret
+Command: Key: Deleted (was Truth)
+Command: Clarion:Iron
 Firenzerral:Strength
-Clarion:Iron
-Command: Key: Deleted (was Storm)
-Command: Marzban:Law
+Marzban:Law
+Solornel:Storm
 Tsovinar:Waves
+Vaughn:Secret
+Command: Key: Deleted (was Secret)
+Command: Clarion:Iron
 Firenzerral:Strength
-Clarion:Iron
+Marzban:Law
+Solornel:Storm
+Tsovinar:Waves
+Command: Key: Deleted (was Storm)
+Command: Clarion:Iron
+Firenzerral:Strength
+Marzban:Law
+Tsovinar:Waves
 Command: Key: Deleted (was Law)
-Command: Tsovinar:Waves
-Clarion:Iron
+Command: Clarion:Iron
 Firenzerral:Strength
+Tsovinar:Waves
 Command: Command: Command: 
