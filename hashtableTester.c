@@ -60,6 +60,8 @@ void sentinelTest() {
 	VER(FindEntry(table, NULL, NULL), "Find");
 	VER(GetKeys(table, NULL, NULL), "Get");
 	VER(GetLoadFactor(table, NULL), "Load");
+	VER(GetHashTableInfo(table, NULL), "Info");
+	VER(SetResizeBehaviour(table, 0, 0, 0), "Resize factor");
 	VER(DestroyHashTable(&table), "Destroy");
 	system(junkdatasentinel);
 }
@@ -92,9 +94,6 @@ int main() {
 				printf("create returned NULL\n");
 			} else {
 				printf("create returned non-NULL\n");
-				if (table->sentinel != (int) 0xDEADBEEF) {
-					printf("FAIL: sentinel is WRONG, is %X", table->sentinel);
-				}
 			}
 		} else if (strcmp(cmd, "destroy") == 0) {
 			freeHashTableContents(table);
@@ -161,6 +160,36 @@ int main() {
 			}
 		} else if (strcmp(cmd, "sentinel") == 0) {
 			sentinelTest();
+		} else if (strcmp(cmd, "info") == 0) {
+			HashTableInfo info;
+			int status = GetHashTableInfo(table, &info);
+			if (status == 0) {
+				printf(
+					"Bucket count: %u\n"
+					"Load factor: %f\n"
+					"Use factor: %f\n"
+					"Largest bucket size: %u\n"
+					"Dynamic behaviour: %d\n"
+					"Expand use factor: %f\n"
+					"Contract use factor: %f\n",
+					info.bucketCount, info.loadFactor, info.useFactor, info.largestBucketSize,
+					info.dynamicBehaviour, info.expandUseFactor, info.contractUseFactor);
+			} else {
+				printf("GetHashTableInfo returned failure\n");
+			}
+		} else if (strcmp(cmd, "setresize") == 0) {
+			int resize;
+			float expand, contract;
+			printf("Resize: (0/1) ");
+			scanf("%d", &resize);
+			printf("Expand: ");
+			scanf("%f", &expand);
+			printf("Contract: ");
+			scanf("%f", &contract);
+			int status = SetResizeBehaviour(table, resize, expand, contract);
+			if (status != 0) {
+				printf("Set resize returned failure\n");
+			}
 		} else if (strcmp(cmd, "quit") == 0) {
 			break;
 		} else {
