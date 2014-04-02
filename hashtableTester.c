@@ -131,6 +131,17 @@ int main() {
 					free(value);
 					break;
 			}
+			if (success >= 0) {
+				HashTableInfo info;
+				int status2 = GetHashTableInfo(table, &info);
+				if (status2 == 0) {
+					if (info.dynamicBehaviour && info.useFactor > info.expandUseFactor) {
+						printf("Insert FAIL: use factor %f"
+							" greater than expand use factor. %f\n",
+							info.useFactor, info.expandUseFactor);
+					}
+				}
+			}
 		} else if (strcmp(cmd, "read") == 0) {
 			printf("Key: ");
 			char key[81];
@@ -151,6 +162,16 @@ int main() {
 			if (success == 0) {
 				printf("Deleted (was %s)\n", value);
 				free(value);
+				HashTableInfo info;
+				int status2 = GetHashTableInfo(table, &info);
+				if (status2 == 0) {
+					if (info.dynamicBehaviour &&
+						info.useFactor < info.contractUseFactor) {
+						printf("Delete FAIL: use factor %f"
+							" less than contract use factor. %f\n",
+							info.useFactor, info.contractUseFactor);
+					}
+				}
 			} else {
 				printf("DeleteValue returned failure\n");
 			}
