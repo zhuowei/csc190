@@ -1,25 +1,22 @@
 Command: Size: create returned non-NULL
 Command: Key: Inserted into blank space
-Command: Key: Inserted into blank space
+Command: Key: Inserted after resolving hash collision
 Command: Key: Inserted after removing existing data: CSC190
 Command: Key: Inserted after removing existing data: Praxis
 Command: Foster:Torture
 StCyr:CSC190
 Command: Key: Torture
 Command: Key: Deleted (was Torture)
-Delete FAIL: use factor 0.066667 less than contract use factor. 0.200000
 Command: StCyr:CSC190
 Command: Command: Size: create returned non-NULL
 Command: Key: Inserted into blank space
-Insert FAIL: use factor 1.000000 greater than expand use factor. 0.700000
-Command: Key: Inserted after resolving hash collision
-Insert FAIL: use factor 1.000000 greater than expand use factor. 0.700000
+Command: Key: Inserted into blank space
 Command: Harry:Potter
 Ron:Weasley
-Command: Load factor: 2.000000
+Command: Load factor: 0.500000
 Command: Key: Deleted (was Weasley)
 Command: Harry:Potter
-Command: Load factor: 1.000000
+Command: Load factor: 0.250000
 Command: Command: Size: create returned non-NULL
 Command: Bucket count: 1
 Load factor: 0.000000
@@ -88,6 +85,13 @@ Command: Key: Deleted (was Law)
 Command: Clarion:Iron
 Firenzerral:Strength
 Tsovinar:Waves
+Command: Bucket count: 1
+Load factor: 3.000000
+Use factor: 1.000000
+Largest bucket size: 3
+Dynamic behaviour: 0
+Expand use factor: 0.300000
+Contract use factor: 0.100000
 Command: Resize: (0/1) Expand: Contract: Command: Clarion:Iron
 Firenzerral:Strength
 Tsovinar:Waves
@@ -101,9 +105,9 @@ Contract use factor: 0.200000
 Command: Key: Deleted (was Iron)
 Command: Key: Deleted (was Strength)
 Command: Tsovinar:Waves
-Command: Bucket count: 1
-Load factor: 1.000000
-Use factor: 1.000000
+Command: Bucket count: 2
+Load factor: 0.500000
+Use factor: 0.500000
 Largest bucket size: 1
 Dynamic behaviour: 1
 Expand use factor: 0.700000

@@ -67,7 +67,6 @@ void sentinelTest() {
 	VER(GetHashTableInfo(table, NULL), "Info");
 	VER(SetResizeBehaviour(table, 0, 0, 0), "Resize factor");
 	VER(DestroyHashTable(&table), "Destroy");
-	system(junkdatasentinel);
 }
 
 #undef VER
